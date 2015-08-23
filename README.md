@@ -1,6 +1,6 @@
 # Airflow Compose
 
-> A small repo that creates the small infrastructure to run [airflow][1].
+> A small repo that creates the small infrastructure to run airflow.
 
 This repo is designed to get the necessary components of [airflow][1] installed
 and talking to each other.  The compose file and the `airflow` directory do a
@@ -9,6 +9,8 @@ few things:
 1. Build an image that has airflow and its dependencies.
 2. Setup a redis image for airflow to use as its message broker.
 3. Setup a postgres image for airflow to use as its backend database.
+
+__Running__
 
 The [`docker-compose`][2] documentation will serve you well, but in short to get
 this running:
@@ -26,4 +28,12 @@ the images you will lose your data.  If you'd like to use this in production
 it would be behoove of you to setup a dedicated database... the good news is, if
 you're looking for workflow management tools, you likely already have.
 
+__Similar Project__
+
+[`puckel/docker-airflow`][3] is a similar project, and was used as this project's
+base, however this repo uses general Dockerfiles as well as postgres
+and redis as opposed to mysql and rabbit.
+
 [1]: https://github.com/airbnb/airflow
+[2]: https://docs.docker.com/compose/
+[3]: https://github.com/puckel/docker-airflow

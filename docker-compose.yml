@@ -1,0 +1,24 @@
+web:
+    build: ./airflow
+    ports:
+        - "8080:8080"
+    links:
+        - postgres:postgres
+        - redis:redis
+worker:
+    build: ./airflow
+    links:
+        - postgres:postgres
+        - redis:redis
+    command: airflow worker
+postgres:
+    image: postgres
+    restart: always
+        - "5432:5432"
+    environment:
+        - POSTGRES_USER=airflow
+        - POSTGRES_PASSWORD=airflow
+redis:
+    image: redis
+    ports:
+        - "6379:6379"
